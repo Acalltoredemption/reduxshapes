@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Shape}from './components/shape/Shape';
+import {useDispatch} from 'react-redux';
+import { changeShape } from './redux/actions';
 import './App.css';
+import { ShapeInputs } from './components/selectors/shapeinputs/ShapeInputs';
+
+const OnShapeChange = (shape:string) => {
+
+  const dispatch = useDispatch();
+
+  const OnShapeChange = (shape:string) => {
+  dispatch(changeShape(shape))
+  }
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Shape changeShape={OnShapeChange} />
+      <ShapeInputs />
     </div>
   );
 }
